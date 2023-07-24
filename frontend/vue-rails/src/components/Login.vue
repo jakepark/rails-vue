@@ -12,6 +12,7 @@ import SupportIcon from './icons/IconSupport.vue'
     <template #heading>Login</template>
 
     <input type="text">Email Address
+    <!-- Set Rails Current User upon POST -->
     <button>Log In</button>
   </WelcomeItem>
 
