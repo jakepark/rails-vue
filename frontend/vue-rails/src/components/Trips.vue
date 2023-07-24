@@ -1,5 +1,17 @@
 <script setup>
 import WelcomeItem from './WelcomeItem.vue'
+import { onMounted, onBeforeMount } from 'vue'
+
+onBeforeMount(() => {
+  console.log(`the component is onBeforeMount`);
+  
+})
+
+onMounted(() => {
+  console.log(`the component is now mounted.`)
+})
+
+
 </script>
 
 <template>
