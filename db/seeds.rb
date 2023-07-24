@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "db/seeds.rb"
+
+user_1 = User.new(email: "user_1@utilizecore.com")
+user_1.save
