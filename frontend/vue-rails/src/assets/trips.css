@@ -23,21 +23,3 @@ th {
 td {
   border: 1px solid red;
 }
-
-.status {
-  border-radius: 4px;
-}
-
-.status-unstarted {
-  background: #6994DE;
-}
-.status-complete {
-  background: #4CAF4F;
-}
-.status-overdue {
-  background: #FF5252;
-}
-.status-in-progress {
-  background: #FFA525;
-}
-
