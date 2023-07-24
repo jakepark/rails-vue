@@ -37,13 +37,39 @@ onMounted(() => {
     Trip Review
     
     <div v-if="trips">
-      <h5>trips</h5>
-      <ul class="mb-0">
-        <li v-for="trip in trips" :key="trip.id">{{trip.owner_id}}</li>
-      </ul>
+      <table >
+        <thead>
+          <tr>
+            <th>
+              {{ Object.keys(trips[0]) }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(trip, i ) in trips" :key="i">
+            {{i}}
+            <!-- {{ trips[i] }} -->
+            <!-- {{trip}} -->
+            <td v-for="(attr, j) in trip" :key="j">
+              <!-- {{ trip[attr] }} -->
+              {{j}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
     </div>
     <div v-if="!trips" class="text-center">
       no trips fetched
     </div>
   </div>
 </template>
+
+<style scoped>
+
+.trips {
+  thead {
+    border: 1px solid red;
+  }
+}
+</style>
