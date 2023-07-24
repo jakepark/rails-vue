@@ -22,3 +22,33 @@ Status - "In Progress" requires keeping track of when a trip has started, and ca
 the UserTrip status based on that. ( Bonus feature: track total duration )
 
 Actions - 
+
+### Frontend API response contract
+
+# Console:
+
+trips = Trip.all
+  Trip Load (0.3ms)  SELECT "trips".* FROM "trips"
+
+trips
+=> 
+[#<Trip:0x00007f81b9b9ee38
+  id: 1,
+  assignee_id: "1",
+  owner_id: "1",
+  ETA: nil,
+  ETC: nil,
+  status_id: "1",
+  action_id: nil,
+  created_at: Mon, 24 Jul 2023 18:54:30.692941000 UTC +00:00,
+  updated_at: Mon, 24 Jul 2023 18:54:30.692941000 UTC +00:00>,
+ #<Trip:0x00007f81b9b9ed98
+  id: 2,
+  assignee_id: "2",
+  owner_id: "1",
+  ETA: nil,
+  ETC: nil,
+  status_id: "1",
+  action_id: nil,
+  created_at: Mon, 24 Jul 2023 18:54:30.706386000 UTC +00:00,
+  updated_at: Mon, 24 Jul 2023 18:54:30.706386000 UTC +00:00>]
