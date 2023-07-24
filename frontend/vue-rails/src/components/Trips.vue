@@ -41,19 +41,18 @@ onMounted(() => {
       <table >
         <thead>
           <tr>
-            <th>
-              {{ Object.keys(trips[0]) }}
+            <th v-for="value in Object.keys(trips[0])">
+              {{ value }}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(trip, i ) in trips" :key="i">
-            {{i}}
             <!-- {{ trips[i] }} -->
             <!-- {{trip}} -->
             <td v-for="(attr, j) in trip" :key="j">
               <!-- {{ trip[attr] }} -->
-              {{j}}
+              {{attr}}
             </td>
           </tr>
         </tbody>
