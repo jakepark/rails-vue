@@ -8,22 +8,15 @@
 
 puts "db/seeds.rb initializing"
 
-user_1 = User.new(email: "user_1@utilizecore.com")
-user_1.save
+user_1 = User.create(email: "user_1@utilizecore.com")
+user_2 = User.create(email: "user_2@utilizecore.com")
 
-user_2 = User.new(email: "user_2@utilizecore.com")
-user_2.save
+unstarted = Status.create(title: "unstarted")
+started = Status.create(title: "started")
+in_progress = Status.create(title: "in_progress")
+overdue = Status.create(title: "overdue")
 
-trip_1 = Trip.new(assignee_id: user_1.id, owner_id: user_1.id, status_id: "0")
+trip_1 = Trip.create(assignee_id: user_1.id, owner_id: user_1.id, status_id: unstarted.id)
 
-
-# Status.new(type: 0) # "Unstarted"
-
-t.string :assignee_id
-t.string :owner_id
-t.datetime :ETA
-t.datetime :ETC
-t.string :status_id
-t.string :action_id
 
 puts "db/seeds.rb seeded"
