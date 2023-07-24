@@ -50,5 +50,22 @@ onMounted(() => {
     <div v-if="!trips" class="text-center">
       no trips found :(
     </div>
+
+    <div class="status-labels">
+      Status Label Guide
+      <span class="status-unstarted">
+      Unstarted
+      </span>
+      <span class="status-complete">
+        Complete
+      </span>
+      <span class="status-overdue">
+        Overdue
+      </span>
+      <span class="status-in-progress">
+        In Progress
+      </span>
+    </div>
   </div>
+
 </template>
