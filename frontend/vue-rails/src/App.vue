@@ -1,5 +1,6 @@
 <script setup>
 import Login from './components/Login.vue'
+import Trips from './components/Trips.vue'
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import Login from './components/Login.vue'
 
   <main>
     <Login />
+    <Trips />
   </main>
 </template>
 
