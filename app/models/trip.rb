@@ -1,4 +1,4 @@
 class Trip < ApplicationRecord
-  has_many :assignees, class_name: "User", foreign_key: "user_id"
+  has_one :assignee, class_name: "User", foreign_key: "id"
   belongs_to :owner, class_name: "User"
 end
