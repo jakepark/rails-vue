@@ -1,0 +1,25 @@
+@import './base.css';
+
+.trips {
+  border: 1px solid grey;
+
+}
+
+
+
+
+table {
+  border: 10px solid grey;
+}
+
+tr {
+  border: 10px solid green;
+
+}
+th {
+  border: 1px solid blue;
+}
+
+td {
+  border: 1px solid red;
+}

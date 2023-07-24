@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onBeforeMount } from 'vue'
 import axios from 'axios';
+import '@/assets/trips.css'
 
 const trips = ref(null);
 
@@ -64,12 +65,3 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
-<style scoped>
-
-.trips {
-  thead {
-    border: 1px solid red;
-  }
-}
-</style>
