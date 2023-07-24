@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_154045) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_24_155117) do
+  create_table "trips", force: :cascade do |t|
+    t.string "assignee_id"
+    t.string "owner_id"
+    t.datetime "ETA"
+    t.datetime "ETC"
+    t.string "status_id"
+    t.string "action_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.boolean "logged_in"

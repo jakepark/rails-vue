@@ -14,4 +14,16 @@ user_1.save
 user_2 = User.new(email: "user_2@utilizecore.com")
 user_2.save
 
+trip_1 = Trip.new(assignee_id: user_1.id, owner_id: user_1.id, status_id: "0")
+
+
+# Status.new(type: 0) # "Unstarted"
+
+t.string :assignee_id
+t.string :owner_id
+t.datetime :ETA
+t.datetime :ETC
+t.string :status_id
+t.string :action_id
+
 puts "db/seeds.rb seeded"
