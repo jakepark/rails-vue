@@ -2,44 +2,18 @@
 import { ref, onMounted, onBeforeMount } from 'vue'
 import axios from 'axios';
 
-// const props = defineProps({
-//   loading: false,
-//   trips: null,
-//   error: null,
-// })
+const trips = ref(null);
 
-// const trips = [
-//   {
-//     assignee: "user_1",
-//     owner: "user_1",
-//   },
-//   {
-//     assignee: "user_1",
-//     owner: "user_1",
-//   }
-// ]
+fetch(`http://localhost:3000`)
+  .then(response => response.json())
+  .then(data => trips.value = data)
+  .catch(function(err){
+    console.error(`> Rails error response: ${err}`)
+  })
 
-// const trips = await fetch(`http://localhost:3000`)
-//   .then((r) => r.json())
 
 onBeforeMount(() => {
   console.log(`the component is onBeforeMount`);
-  axios.get('http://localhost:3000')
-    .then(function (response) {
-      // handle
-      console.log(`success!`);
-      console.log(response);
-      // props.trips = response.data
-    })
-    .catch(function (error) {
-      // handle error
-      console.error(`error!`);
-      console.log(error);
-    })
-    .finally(function () {
-      // always executed
-    });
-  
 })
 
 onMounted(() => {
@@ -60,22 +34,21 @@ onMounted(() => {
   <!-- row data -->
 
 
-  <div class="trip">
+  <div class="trips">
     Trip Review
     
     <div v-if="loading" class="loading">Loading...</div>
 
     <div v-if="error" class="error">{{ error }}</div>
 
-    <div v-if="trips" class="content">
-      Trip Content
-
-      {{ trips }}
-      <!-- <div v-for="trip in trips">
-        Trip
-        <p>{{ trip.assignee }}</p>
-        <p>{{ trip.owner }}</p>
-      </div> -->
+    <div v-if="trips">
+      <h5>trips</h5>
+      <ul class="mb-0">
+        <li v-for="trip in trips" :key="trip.id">{{trip.owner_id}}</li>
+      </ul>
+    </div>
+    <div v-if="!trips" class="text-center">
+      <!-- <div class="spinner-border spinner-border-sm"></div> -->
     </div>
   </div>
 </template>
