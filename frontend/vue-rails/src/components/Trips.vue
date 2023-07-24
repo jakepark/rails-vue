@@ -25,15 +25,6 @@ onMounted(() => {
 </script>
 
 <template>
-  
-  <!-- header row -->
-  <!-- for attribute in tripProp -->
-
-
-  <!-- for trip in UserTrips -->
-  <!-- row data -->
-
-
   <div class="trips">
     Trip Review
     
@@ -48,10 +39,7 @@ onMounted(() => {
         </thead>
         <tbody>
           <tr v-for="(trip, i ) in trips" :key="i">
-            <!-- {{ trips[i] }} -->
-            <!-- {{trip}} -->
             <td v-for="(attr, j) in trip" :key="j">
-              <!-- {{ trip[attr] }} -->
               {{attr}}
             </td>
           </tr>
@@ -60,7 +48,7 @@ onMounted(() => {
       
     </div>
     <div v-if="!trips" class="text-center">
-      no trips fetched
+      no trips found :(
     </div>
   </div>
 </template>
