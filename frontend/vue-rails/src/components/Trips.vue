@@ -18,7 +18,6 @@ onBeforeMount(() => {
 
 onMounted(() => {
   console.log(`the component is now mounted.`)
-
 })
 
 
@@ -37,10 +36,6 @@ onMounted(() => {
   <div class="trips">
     Trip Review
     
-    <div v-if="loading" class="loading">Loading...</div>
-
-    <div v-if="error" class="error">{{ error }}</div>
-
     <div v-if="trips">
       <h5>trips</h5>
       <ul class="mb-0">
@@ -48,7 +43,7 @@ onMounted(() => {
       </ul>
     </div>
     <div v-if="!trips" class="text-center">
-      <!-- <div class="spinner-border spinner-border-sm"></div> -->
+      no trips fetched
     </div>
   </div>
 </template>
