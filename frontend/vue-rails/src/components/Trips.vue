@@ -12,7 +12,7 @@ import SupportIcon from './icons/IconSupport.vue'
     <template #icon>
       <DocumentationIcon />
     </template>
-    <template #heading>Trip Review</template>
+    <template #heading>Trips</template>
 
     
   </WelcomeItem>
