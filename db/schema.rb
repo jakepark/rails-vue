@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_155117) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_24_180257) do
+  create_table "statuses", force: :cascade do |t|
+    t.string "title"
+    t.datetime "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string "assignee_id"
     t.string "owner_id"
