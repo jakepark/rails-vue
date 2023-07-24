@@ -16,7 +16,7 @@ started = Status.create(title: "started")
 in_progress = Status.create(title: "in_progress")
 overdue = Status.create(title: "overdue")
 
-trip_1 = Trip.create(assignee_id: user_1.id, owner_id: user_1.id, status_id: unstarted.id)
+# trip_1 = Trip.create(assignee: user_1, owner: user_1, status_id: unstarted.id)
 
 
 puts "db/seeds.rb seeded"
