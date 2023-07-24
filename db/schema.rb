@@ -19,8 +19,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_180257) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.string "assignee_id"
-    t.string "owner_id"
     t.datetime "ETA"
     t.datetime "ETC"
     t.string "status_id"

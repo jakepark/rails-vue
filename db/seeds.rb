@@ -16,6 +16,10 @@ started = Status.create(title: "started")
 in_progress = Status.create(title: "in_progress")
 overdue = Status.create(title: "overdue")
 
+
+# t.references :assignee, foreign_key: { to_table: :users }
+# t.references :owner, foreign_key: { to_table: :users }
+
 # trip_1 = Trip.create(owner: user_1, assignee: user_1, status_id: unstarted.id)
 # trip_2 = Trip.create(owner: user_1, assignee: user_2, status_id: unstarted.id)
 
