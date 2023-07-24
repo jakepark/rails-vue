@@ -5,7 +5,7 @@ import Trips from './components/Trips.vue'
 
 <template>
   <header>
-    Trip Planner
+    Jake Park - Trip Planner
   </header>
 
   <main>
