@@ -4,4 +4,8 @@ class ApplicationController < ActionController::API
     puts ">>> ApplicationController#index"
     
   end
+
+  def current_user
+    puts "current_user"
+  end
 end
