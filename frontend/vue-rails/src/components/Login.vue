@@ -11,6 +11,10 @@ import SupportIcon from './icons/IconSupport.vue'
 
   function logIn(){
     console.log(`logIn!`);
+    fetch("http://localhost:3000/login")
+      .then((resp) => {
+        debugger
+      })
   }
 
 </script>
