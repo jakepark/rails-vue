@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root "trip#index"
   post "trip", to: "trip#create"
   post "login", to: "login#show"
+  get "user", to: "user#index"
 end
