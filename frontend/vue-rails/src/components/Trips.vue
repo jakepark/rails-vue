@@ -98,6 +98,8 @@ onMounted(() => {
           <tr v-for="(trip, i ) in trips" :key="i">
             <td v-for="(attr, j) in trip" :key="j">
               <span v-if="j !== 'id' && j !== 'status_id'">{{attr}}</span>
+
+
               <StatusUnstarted v-if="j == 'status_id' && statusHash[attr] == 'StatusUnstarted'"></StatusUnstarted>
               <StatusComplete v-if="j == 'status_id' && statusHash[attr] == 'StatusComplete'"></StatusComplete>
               <StatusOverdue v-if="j == 'status_id' && statusHash[attr] == 'StatusOverdue'"></StatusOverdue>
