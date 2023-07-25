@@ -126,12 +126,17 @@ export default {
       <button id="show-modal" @click="showModal = true">Checkin</button>
       <!-- use the modal component, pass in the prop -->
       <ModalForm v-if="showModal" @close="showModal = false">
-        <h3 slot="header">Create New</h3>
-        <div slot="body">custom body</div>
-        <div slot="footer">
-          custom footer
+        <template #header>
+          <h3>Create New</h3>
+        </template>
+
+        <template #body>
+          <p>Custom Body</p>
+        </template>
+
+        <template #footer>
           <button>Create</button>
-        </div>
+        </template>
       </ModalForm>
 
     </div>
