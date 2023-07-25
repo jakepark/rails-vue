@@ -1,15 +1,3 @@
-<script>
-
-  // export default {
-  //   data: function() {
-  //     return {
-  //       showModal: false
-  //     }
-  //   }
-  // }
-
-</script>
-
 <template>
   <div class="modal-mask">
     <div class="modal-wrapper">

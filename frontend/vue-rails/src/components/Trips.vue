@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <script>
-import Modal from './Modal.vue'
+import ModalForm from './ModalForm.vue'
 
 export default {
   data: function() {
@@ -123,11 +123,16 @@ export default {
 
     <div class="button-modal">
 
-      <button id="show-modal" @click="showModal = true">Show Modals</button>
+      <button id="show-modal" @click="showModal = true">Checkin</button>
       <!-- use the modal component, pass in the prop -->
-      <Modal v-if="showModal" @close="showModal = false">
-        <h3 slot="header">custom header</h3>
-      </Modal>
+      <ModalForm v-if="showModal" @close="showModal = false">
+        <h3 slot="header">Create New</h3>
+        <div slot="body">custom body</div>
+        <div slot="footer">
+          custom footer
+          <button>Create</button>
+        </div>
+      </ModalForm>
 
     </div>
   </div>
