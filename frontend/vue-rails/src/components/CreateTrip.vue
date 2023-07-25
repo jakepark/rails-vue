@@ -3,33 +3,47 @@
   defineEmits(['closeModal'])
 
   import axios from 'axios';
-  import { ref } from 'vue'
+  import { ref, onMounted, onBeforeMount } from 'vue'
 
   const selectAssignee = ref("")
   const dateEta = ref("")
   const dateEtc = ref("")
+  
+  import { useDefaultStore } from '../stores/default'
+  const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
+
+  console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
+
+  const currentUser = ref(null)
 
   function handleClick(){
     console.log(`handleClick!`);
+    
     axios.post("http://localhost:3000/trip", {
       trip: {
         assignee_id: selectAssignee.value,
-        owner_id: getStoreCurrentUser().id,
+        owner_id: currentUser.value.id,
         ETA: dateEta.value,
         ETC: dateEtc.value,
       }
     })
     .then((resp) => {
-      console.log(`logIn success!`);
+      console.log(`createTrip success!`);
       
       // router.push('/trips')
     })
     .catch((err) => {
-      console.error(`logIn error`)
+      console.error(`createTrip error`)
     })
     .finally(() => {
     })
   }
+
+  onMounted(() => {
+    console.log(`onMounted!`);
+    currentUser.value = getStoreCurrentUser()
+    console.log(`onMounted setCurrentUser! ${currentUser.value?.email} <`);
+  })
 
 
 </script>
