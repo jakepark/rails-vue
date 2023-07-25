@@ -16,9 +16,10 @@
 
   const currentUser = ref(null)
 
-  const emitTripCreation = (event) => {
-    console.log(`emitTripCreation!`);
+  const emitUpdates = (event) => {
+    console.log(`emitUpdates!`);
     emit('tripCreated')
+    emit('closeModal')
   }
 
   function handleClick(){
@@ -41,7 +42,7 @@
     })
     .finally(() => {
       // $emit('closeModal')
-      emitTripCreation()
+      emitUpdates()
     })
   }
 

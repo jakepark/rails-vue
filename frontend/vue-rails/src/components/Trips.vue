@@ -19,14 +19,10 @@ fetch(`http://localhost:3000`)
   })
 
 
-onBeforeMount(() => {
-  console.log(`Trips component is onBeforeMount`);
-})
-
 onMounted(() => {
-  console.log(`Trips component is now mounted.`)
+  // console.log(`Trips component is now mounted.`)
   currentUser.value = getStoreCurrentUser()
-  console.log(`onMounted setCurrentUser! ${currentUser.value?.email} <`);
+  // console.log(`onMounted setCurrentUser! ${currentUser.value?.email} <`);
 })
 
 
@@ -38,8 +34,8 @@ import CreateTrip from './CreateTrip.vue'
 
 const showModal = ref(false)
 
-function toggleModal() {
-  console.log(`toggleModal!`);
+function handleToggleModal() {
+  console.log(`handleToggleModal!`);
   showModal.value = !showModal.value
 }
 function handleTripCreated() {
@@ -153,8 +149,8 @@ export default {
 
     <div class="button-modal">
 
-      <button id="show-modal" @click="toggleModal">Checkin</button>
-      <CreateTrip  v-if="showModal" v-model="showModal" @close-modal="toggleModal">
+      <button id="show-modal" @click="handleToggleModal">Checkin</button>
+      <CreateTrip  v-if="showModal" v-model="showModal" @close-modal="handleToggleModal">
       </CreateTrip>
 
     </div>
