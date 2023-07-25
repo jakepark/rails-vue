@@ -104,6 +104,13 @@ onMounted(() => {
               <StatusComplete v-if="j == 'status_id' && statusHash[attr] == 'StatusComplete'"></StatusComplete>
               <StatusOverdue v-if="j == 'status_id' && statusHash[attr] == 'StatusOverdue'"></StatusOverdue>
               <StatusInProgress v-if="j == 'status_id' && statusHash[attr] == 'StatusInProgress'"></StatusInProgress>
+
+              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] == 1">
+                Check In
+              </button>
+              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] != 1 && trip['status_id'] != 2">
+                Check Out
+              </button>
             </td>
           </tr>
         </tbody>
@@ -137,6 +144,12 @@ onMounted(() => {
   padding: 10px 0;
   background-color: #E4EDFE;
   border: none;
+}
+
+.btn-status-check {
+  background: #1A6EFB;
+  color: white;
+  border-radius: 5px;
 }
 
 button {
