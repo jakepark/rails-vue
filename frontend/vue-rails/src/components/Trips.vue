@@ -24,6 +24,18 @@ onMounted(() => {
 
 </script>
 
+<script>
+import Modal from './Modal.vue'
+
+export default {
+  data: function() {
+    return {
+      showModal: false
+    }
+  }
+}
+</script>
+
 <template>
   <div class="trips">
     Trip Review
@@ -108,11 +120,21 @@ onMounted(() => {
         In Progress
       </div>
     </div>
+
+    <div class="button-modal">
+
+      <button id="show-modal" @click="showModal = true">Show Modals</button>
+      <!-- use the modal component, pass in the prop -->
+      <Modal v-if="showModal" @close="showModal = false">
+        <h3 slot="header">custom header</h3>
+      </Modal>
+
+    </div>
   </div>
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .status-label {
   
 
