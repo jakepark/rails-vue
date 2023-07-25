@@ -29,6 +29,7 @@ defineEmits(['update:emailInput'])
 </script>
 
 <template>
+  <div id="login">
     <label for="email-input">Email Address
     <input id="email-input" :value="emailInput" placeholder="-"
       @input="$emit('update:emailInput', $event.target.value)"
@@ -36,5 +37,14 @@ defineEmits(['update:emailInput'])
     </label>
     <!-- Set Rails Current User upon POST -->
     <button @click="logIn">Log In</button>
-
+  </div>
 </template>
+
+<style lang="scss">
+
+#login {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+}
+</style>
