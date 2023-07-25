@@ -66,6 +66,22 @@ function startTrip(tripId){
   })
   .finally(() => {
     // emitUpdates()
+    getTrips()
+  })
+}
+function finishTrip(tripId){
+  console.log(`startTrip!`);
+  axios.patch(`http://localhost:3000/trip/${tripId}/finish`)
+  .then((resp) => {
+    console.log(`startTrip success!`);
+    
+  })
+  .catch((err) => {
+    console.error(`startTrip error`)
+  })
+  .finally(() => {
+    // emitUpdates()
+    getTrips()
   })
 }
 
@@ -123,7 +139,7 @@ onMounted(() => {
               <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] == 1" @click="startTrip(trip['id'])">
                 Check In
               </button>
-              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] != 1 && trip['status_id'] != 2">
+              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] != 1 && trip['status_id'] != 2" @click="finishTrip(trip['id'])">
                 Check Out
               </button>
             </td>
