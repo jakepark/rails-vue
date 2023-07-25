@@ -1,17 +1,15 @@
 <script setup>
-import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
 import axios from 'axios'
+
+defineProps(['emailInput'])
+defineEmits(['update:emailInput'])
+
 </script>
 
 <script>
 
   function logIn(){
-    axios.post("http://localhost:3000/login", {email: "user_0@utilizecore.com"})
+    axios.post("http://localhost:3000/login", {email: emailInput})
       .then((resp) => {
         console.log(`logIn success!`);
       })
@@ -20,15 +18,23 @@ import axios from 'axios'
       })
   }
 
+  export default {
+    data: function() {
+      return {
+        email: null
+      }
+    }
+  }
+
 </script>
 
 <template>
-  <WelcomeItem>
-    <template #heading>Login</template>
-
-    <input type="text">Email Address
+    <label for="email-input">Email Address
+    <input id="email-input" :value="emailInput" placeholder="-"
+      @input="$emit('update:emailInput', $event.target.value)"
+    >
+    </label>
     <!-- Set Rails Current User upon POST -->
     <button @click="logIn">Log In</button>
-  </WelcomeItem>
 
 </template>
