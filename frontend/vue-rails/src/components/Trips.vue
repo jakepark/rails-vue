@@ -131,8 +131,10 @@ onMounted(() => {
 <style lang="scss" scoped>
 
 .button-modal {
-  margin: 10px 0;
+  margin: 0;
   padding: 10px 0;
+  background-color: #E4EDFE;
+  border: none;
 }
 
 button {

@@ -2,9 +2,16 @@ class TripController < ActionController::API
 
   def index
     puts ">>> TripController#index"
-    trips = Trip.select('assignee_id', 'owner_id', 'ETA', 'ETC', 'status_id', 'action_id').all
+    trips = Trip.select('assignee_id', 'owner_id', 'ETA', 'ETC', 'status_id', 'action_id').preload(:assignee, :owner).all
 
-    render json: trips.to_json
+    mapped_trips = trips.map do |trip| 
+      trip.attributes.merge({
+        assignee_email: trip.assignee.email,
+        owner_email: trip.owner.email
+      })
+    end
+    
+    render json: mapped_trips.to_json
   end
 
   def create
