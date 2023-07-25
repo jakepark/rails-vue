@@ -34,13 +34,34 @@ class TripController < ActionController::API
     end
   end
 
-  def update(trip_id)
-    puts "update trip #{trip_id}"
-
+  def start
+    puts "start trip"
+    trip_id = params[:id].to_i
+    trip = Trip.find(trip_id)
+    trip.started_at = Time.now
+    
+    if trip.save
+      render json: trip.to_json
+    else
+      head 500
+    end
+  end
+  
+  def finish
+    puts "finish trip"
+    trip_id = params[:id].to_i
+    trip = Trip.find(trip_id)
+    trip.finished_at = Time.now
+    
+    if trip.save
+      render json: trip.to_json
+    else
+      head 500
+    end
   end
 
   private
   def trip_params
-    params.require(:trip).permit(:assignee_id, :owner_id, :ETA, :ETC,)
+    params.require(:trip).permit(:assignee_id, :owner_id, :ETA, :ETC)
   end
 end

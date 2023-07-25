@@ -37,9 +37,9 @@ function getTrips (){
 
 const statusHash = {
   1: "StatusUnstarted",
-  2: "StatusComplete",
+  2: "StatusInProgress",
   3: "StatusOverdue",
-  4: "StatusInProgress",
+  4: "StatusComplete",
 }
 
 getTrips()
@@ -54,9 +54,9 @@ function handleToggleModal() {
   getTrips()
 }
 
-function startTrip(){
+function startTrip(tripId){
   console.log(`startTrip!`);
-  axios.post(`http://localhost:3000/trip/`)
+  axios.patch(`http://localhost:3000/trip/${tripId}/start`)
   .then((resp) => {
     console.log(`startTrip success!`);
     
@@ -116,12 +116,12 @@ onMounted(() => {
 
 
               <StatusUnstarted v-if="j == 'status_id' && statusHash[attr] == 'StatusUnstarted'"></StatusUnstarted>
-              <StatusComplete v-if="j == 'status_id' && statusHash[attr] == 'StatusComplete'"></StatusComplete>
-              <StatusOverdue v-if="j == 'status_id' && statusHash[attr] == 'StatusOverdue'"></StatusOverdue>
               <StatusInProgress v-if="j == 'status_id' && statusHash[attr] == 'StatusInProgress'"></StatusInProgress>
+              <StatusOverdue v-if="j == 'status_id' && statusHash[attr] == 'StatusOverdue'"></StatusOverdue>
+              <StatusComplete v-if="j == 'status_id' && statusHash[attr] == 'StatusComplete'"></StatusComplete>
 
-              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] == 1" @click="startTrip" :key="j">
-                Check In trip {{trip['id']}}
+              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] == 1" @click="startTrip(trip['id'])">
+                Check In
               </button>
               <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] != 1 && trip['status_id'] != 2">
                 Check Out
