@@ -128,8 +128,8 @@ export default {
       <ModalForm v-if="showModal">
 
         <template #header>
-          <h3>Create New</h3>
-          <button @click="showModal = false">X</button>
+          <h3 style="display: inline-block">Create New</h3>
+          <button @click="showModal = false" style="float: right">X</button>
         </template>
 
         <template #body>
