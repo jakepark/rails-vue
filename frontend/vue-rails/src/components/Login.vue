@@ -6,13 +6,15 @@ import { storeToRefs } from 'pinia'
 import { useDefaultStore } from '../stores/default'
 
 const { currentUser } = storeToRefs(useDefaultStore())
-const { getStoreCurrentUser, setStoreCurrentUser } = useDefaultStore()
+const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
 
 console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
 
 defineProps(['emailInput'])
 defineEmits(['update:emailInput'])
 
+
+const emailInput = ref("")
 
 function setCurrentUser(user){
   console.log(`setCurrentUser(user.email): ${user.email}!`);
@@ -21,16 +23,16 @@ function setCurrentUser(user){
 
 function logIn(event){
   console.log(`logIn!`);
-  let emailInput = event.target.parentElement.firstChild.lastChild.value; // messy..
-  console.log(`emailInput!: ${emailInput}`);
+  console.log(`emailInput!: ${emailInput.value}`);
 
-  axios.post("http://localhost:3000/login", {email: emailInput}) // user_1@utilizecore.com
+  axios.post("http://localhost:3000/login", {email: emailInput.value}) // user_1@utilizecore.com
     .then((resp) => {
       console.log(`logIn success!`);
       setCurrentUser(resp.data)
     })
     .catch((err) => {
       console.error(`logIn error`)
+      resetStore()
     })
     .finally(() => {
       console.log(`getStoreCurrentUser().email: ${getStoreCurrentUser()?.email}`);
@@ -56,9 +58,7 @@ function logIn(event){
 <template>
   <div id="login">
     <label for="email-input">Email Address
-    <input id="email-input" :value="emailInput" placeholder="-"
-      @input="$emit('update:emailInput', $event.target.value)"
-    >
+    <input id="email-input" v-model="emailInput" placeholder="-">
     </label>
     <!-- Set Rails Current User upon POST -->
     <button @click="logIn($event)">Log In</button>

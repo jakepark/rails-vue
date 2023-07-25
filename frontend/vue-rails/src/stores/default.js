@@ -5,11 +5,9 @@ import { defineStore } from 'pinia'
 export const useDefaultStore = defineStore({
   id: "default",
   state: () => ({
-    counter: 0,
     currentUser: null,
   }),
   getters: {
-    doubleCounter: (state) => state.counter * 2,
     currentUserEmail: (state) => state.currentUser.email,
   },
   actions: {
@@ -22,9 +20,8 @@ export const useDefaultStore = defineStore({
       return this.currentUser = user;
     },
 
-    reset() {
-      this.counter = 0;
-      this.currentUser = null;
+    resetStore() {
+      return this.currentUser = null;
     },
   },
 })
