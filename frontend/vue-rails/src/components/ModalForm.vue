@@ -77,6 +77,7 @@
   .modal-footer {
     margin: 20px 0;
     padding: 0 30px;
+    display: flex;
   }
 
   .modal-default-button {

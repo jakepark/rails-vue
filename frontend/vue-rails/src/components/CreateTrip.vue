@@ -2,8 +2,30 @@
   import ModalForm from './ModalForm.vue'
   defineEmits(['closeModal'])
 
+  import axios from 'axios';
+  import { ref } from 'vue'
+
+  const selectAssignee = ref("")
+  const dateEta = ref("")
+  const dateEtc = ref("")
+
   function handleClick(){
     console.log(`handleClick!`);
+    axios.post("http://localhost:3000/trip", {
+      userId: selectAssignee,
+      dateEta: dateEta,
+      dateEtc: dateEtc,
+    })
+    .then((resp) => {
+      console.log(`logIn success!`);
+      
+      // router.push('/trips')
+    })
+    .catch((err) => {
+      console.error(`logIn error`)
+    })
+    .finally(() => {
+    })
   }
 
 
@@ -20,7 +42,7 @@
     <template #body>
       
       <label for="">Assignee</label>
-      <input list="select-assignee">
+      <input list="select-assignee" v-model="selectAssignee">
       <datalist id="select-assignee">
         <option value="1"></option>
         <option value="2"></option>
@@ -29,9 +51,9 @@
         <option value="6"></option>
       </datalist>
       <label for="">ETA</label>
-      <input type="date">
+      <input type="date" v-model="dateEta">
       <label for="">ETC</label>
-      <input type="date">
+      <input type="date" v-model="dateEtc">
 
 
 
