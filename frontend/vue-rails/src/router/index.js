@@ -13,7 +13,8 @@ const routes = [
   },
   {
     path: "/trips",
-    component: Trips
+    component: Trips,
+    beforeEnter: [isAuthenticated]
   },
 ];
 
@@ -26,6 +27,9 @@ const router = createRouter({
   routes, // short for `routes: routes`
 })
 
-
+function isAuthenticated(to) {
+  // backend auth
+  return false
+} 
 
 export default router;
