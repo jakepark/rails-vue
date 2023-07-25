@@ -7,7 +7,7 @@ const trips = ref(null);
 
 import { useDefaultStore } from '../stores/default'
 const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
-console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
+import VueCookies from 'vue-cookies'
 
 const currentUser = ref(null)
 
@@ -33,7 +33,8 @@ function handleToggleModal() {
 }
 
 onMounted(() => {
-  currentUser.value = getStoreCurrentUser()
+  currentUser.value = getStoreCurrentUser() || VueCookies.get("currentUser")
+  console.log(`currentUser.value.email!: ${currentUser.value?.email}`);
 })
 
 

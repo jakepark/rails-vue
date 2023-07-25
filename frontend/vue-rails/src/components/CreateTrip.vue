@@ -11,8 +11,7 @@
   
   import { useDefaultStore } from '../stores/default'
   const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
-
-  console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
+  import VueCookies from 'vue-cookies'
 
   const currentUser = ref(null)
 
@@ -47,9 +46,8 @@
   }
 
   onMounted(() => {
-    console.log(`onMounted!`);
-    currentUser.value = getStoreCurrentUser()
-    console.log(`onMounted setCurrentUser! ${currentUser.value?.email} <`);
+    currentUser.value = getStoreCurrentUser() || VueCookies.get("currentUser")
+    console.log(`currentUser.value.email!: ${currentUser.value?.email}`);
   })
 
 
