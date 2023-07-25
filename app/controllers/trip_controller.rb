@@ -2,7 +2,7 @@ class TripController < ActionController::API
 
   def index
     puts ">>> TripController#index"
-    trips = Trip.all
+    trips = Trip.select('assignee_id', 'owner_id', 'ETA', 'ETC', 'status_id', 'action_id').all
 
     render json: trips.to_json
   end
