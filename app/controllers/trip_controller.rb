@@ -2,12 +2,13 @@ class TripController < ActionController::API
 
   def index
     puts ">>> TripController#index"
-    trips = Trip.select('assignee_id', 'owner_id', 'ETA', 'ETC', 'status_id', 'action_id').preload(:assignee, :owner).all
+    trips = Trip.select('assignee_id', 'owner_id', 'ETA', 'ETC', 'status_id', 'action_id', 'id').preload(:assignee, :owner).all
     
     mapped_trips = []
     trips.each do |trip| 
       mapped_trips.push(
         {
+          id: trip.id,
           assignee_email: trip.assignee.email,
           owner_email: trip.owner.email,
           ETA: trip.ETA,
@@ -31,6 +32,11 @@ class TripController < ActionController::API
     else
       head 500
     end
+  end
+
+  def update(trip_id)
+    puts "update trip #{trip_id}"
+
   end
 
   private

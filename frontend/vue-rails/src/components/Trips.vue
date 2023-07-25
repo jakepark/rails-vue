@@ -54,6 +54,21 @@ function handleToggleModal() {
   getTrips()
 }
 
+function startTrip(){
+  console.log(`startTrip!`);
+  axios.post(`http://localhost:3000/trip/`)
+  .then((resp) => {
+    console.log(`startTrip success!`);
+    
+  })
+  .catch((err) => {
+    console.error(`startTrip error`)
+  })
+  .finally(() => {
+    // emitUpdates()
+  })
+}
+
 onMounted(() => {
   currentUser.value = getStoreCurrentUser() || VueCookies.get("currentUser")
   console.log(`currentUser.value.email!: ${currentUser.value?.email}`);
@@ -105,8 +120,8 @@ onMounted(() => {
               <StatusOverdue v-if="j == 'status_id' && statusHash[attr] == 'StatusOverdue'"></StatusOverdue>
               <StatusInProgress v-if="j == 'status_id' && statusHash[attr] == 'StatusInProgress'"></StatusInProgress>
 
-              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] == 1">
-                Check In
+              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] == 1" @click="startTrip" :key="j">
+                Check In trip {{trip['id']}}
               </button>
               <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] != 1 && trip['status_id'] != 2">
                 Check Out
