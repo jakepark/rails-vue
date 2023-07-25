@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "trip#index"
+  post "trip", to: "trip#create"
   post "login", to: "login#show"
 end

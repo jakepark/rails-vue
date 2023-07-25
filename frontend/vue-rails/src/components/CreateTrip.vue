@@ -12,9 +12,11 @@
   function handleClick(){
     console.log(`handleClick!`);
     axios.post("http://localhost:3000/trip", {
-      userId: selectAssignee,
-      dateEta: dateEta,
-      dateEtc: dateEtc,
+      trip: {
+        assignee_id: selectAssignee.value,
+        ETA: dateEta.value,
+        ETC: dateEtc.value,
+      }
     })
     .then((resp) => {
       console.log(`logIn success!`);
