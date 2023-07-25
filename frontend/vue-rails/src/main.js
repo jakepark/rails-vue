@@ -10,4 +10,9 @@ app.component("ModalForm", ModalForm)
 
 import router from './router'
 
+// Vue Store
+import { createPinia } from 'pinia'
+const pinia = createPinia()
+app.use(pinia)
+
 app.use(router).mount('#app')

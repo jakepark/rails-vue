@@ -1,6 +1,10 @@
 <script setup>
 import axios from 'axios'
 
+import { useMainStore } from "../store/default";
+
+const storeMain = useMainStore();
+
 defineProps(['emailInput'])
 defineEmits(['update:emailInput'])
 
@@ -8,8 +12,12 @@ defineEmits(['update:emailInput'])
 
 <script>
 
+  
+
+
   function setCurrentUser(emailInput){
     console.log(`setCurrentUser: ${emailInput}!`);
+    debugger
   }
 
   function logIn(event){
