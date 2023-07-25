@@ -18,11 +18,8 @@ overdue = Status.find_or_create_by(title: "overdue")
 
 
 trip_1 = Trip.create(owner: user_1, assignee: user_1, status_id: unstarted.id)
-trip_2 = Trip.create(owner: user_1, assignee: user_2, status_id: unstarted.id)
-
-
-# trip_1 = Trip.create(assignee: user_1, owner: user_1, status_id: unstarted.id)
-# trip_2 = Trip.create(assignee: user_1, owner: user_1, status_id: unstarted.id)
-
+trip_2 = Trip.create(owner: user_1, assignee: user_1, status_id: started.id)
+trip_3 = Trip.create(owner: user_1, assignee: user_1, status_id: in_progress.id)
+trip_4 = Trip.create(owner: user_1, assignee: user_1, status_id: overdue.id)
 
 puts "db/seeds.rb seeded"
