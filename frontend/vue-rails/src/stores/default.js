@@ -13,6 +13,10 @@ export const useMainStore = defineStore({
     currentUserEmail: (state) => state.currentUser.email,
   },
   actions: {
+    setStoreCurrentUser(user) {
+      this.currentUser = user;
+    },
+
     reset() {
       this.counter = 0;
       this.currentUser = null;

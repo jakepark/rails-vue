@@ -1,9 +1,6 @@
 <script setup>
 import axios from 'axios'
 
-import { useMainStore } from "../store/default";
-
-const storeMain = useMainStore();
 
 defineProps(['emailInput'])
 defineEmits(['update:emailInput'])
@@ -12,12 +9,8 @@ defineEmits(['update:emailInput'])
 
 <script>
 
-  
-
-
-  function setCurrentUser(emailInput){
-    console.log(`setCurrentUser: ${emailInput}!`);
-    debugger
+  function setCurrentUser(user){
+    console.log(`setCurrentUser(user.email): ${user.email}!`);
   }
 
   function logIn(event){
@@ -28,7 +21,7 @@ defineEmits(['update:emailInput'])
     axios.post("http://localhost:3000/login", {email: emailInput}) // user_1@utilizecore.com
       .then((resp) => {
         console.log(`logIn success!`);
-        setCurrentUser(emailInput)
+        setCurrentUser(resp.data)
       })
       .catch((err) => {
         console.error(`logIn error`)
@@ -36,7 +29,7 @@ defineEmits(['update:emailInput'])
   }
 
   export default {
-    data: function() {
+    data() {
       return {
         email: null
       }
