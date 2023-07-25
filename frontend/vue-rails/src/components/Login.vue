@@ -11,10 +11,12 @@ import axios from 'axios'
 <script>
 
   function logIn(){
-    console.log(`logIn!`);
     axios.post("http://localhost:3000/login", {email: "user_0@utilizecore.com"})
       .then((resp) => {
-        debugger
+        console.log(`logIn success!`);
+      })
+      .catch((err) => {
+        console.error(`logIn error: ${err}`)
       })
   }
 
