@@ -183,22 +183,26 @@ button {
 
 .unstarted {
   width: 100px;
+  color: white;
   border-radius: 4px;
   background: #6994DE;
 }
 .complete {
   width: 100px;
+  color: white;
   border-radius: 4px;
   background: #4CAF4F;
   
 }
 .overdue {
   width: 100px;
+  color: white;
   border-radius: 4px;
   background: #FF5252;
 }
 .in-progress {
   width: 100px;
+  color: white;
   border-radius: 4px;
   background: #FFA525;
 }

@@ -18,11 +18,11 @@ in_progress = Status.find_or_create_by(title: "in_progress")
 overdue = Status.find_or_create_by(title: "overdue")
 
 
-trip_1 = Trip.create(owner: user_1, assignee: user_1, status_id: unstarted.id)
-trip_2 = Trip.create(owner: user_1, assignee: user_1, status_id: started.id)
-trip_3 = Trip.create(owner: user_1, assignee: user_1, status_id: in_progress.id)
-trip_4 = Trip.create(owner: user_1, assignee: user_1, status_id: overdue.id)
-trip_5 = Trip.create(owner: user_2, assignee: user_1, status_id: unstarted.id)
-trip_6 = Trip.create(owner: user_3, assignee: user_1, status_id: unstarted.id)
+trip_1 = Trip.create(owner: user_1, assignee: user_1, status_id: unstarted.id, ETA: Time.now + 3.days, ETC: Time.now + 5.days)
+trip_2 = Trip.create(owner: user_1, assignee: user_1, status_id: started.id, ETA: Time.now + 4.days, ETC: Time.now + 6.days)
+trip_3 = Trip.create(owner: user_1, assignee: user_1, status_id: in_progress.id, ETA: Time.now + 5.days, ETC: Time.now + 7.days)
+trip_4 = Trip.create(owner: user_1, assignee: user_1, status_id: overdue.id, ETA: Time.now + 6.days, ETC: Time.now + 8.days)
+trip_5 = Trip.create(owner: user_2, assignee: user_1, status_id: unstarted.id, ETA: Time.now + 7.days, ETC: Time.now + 9.days)
+trip_6 = Trip.create(owner: user_3, assignee: user_1, status_id: unstarted.id, ETA: Time.now + 8.days, ETC: Time.now + 10.days)
 
 puts "db/seeds.rb seeded"
