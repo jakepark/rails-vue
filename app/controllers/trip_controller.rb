@@ -10,7 +10,8 @@ class TripController < ActionController::API
   def create
     puts ">>> TripController#create"
     trip = Trip.new(trip_params)
-
+    trip.status_id = 1 # magic number here
+    
     if trip.save
       render json: trip.to_json
     else
