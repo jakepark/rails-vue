@@ -4,10 +4,8 @@ import { ref } from 'vue'
 
 import router from '../router'
 
-import { storeToRefs } from 'pinia'
 import { useDefaultStore } from '../stores/default'
 
-const { currentUser } = storeToRefs(useDefaultStore())
 const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
 
 console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);

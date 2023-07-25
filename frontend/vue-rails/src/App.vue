@@ -1,5 +1,4 @@
 <script setup>
-import { storeToRefs } from 'pinia'
 import { useDefaultStore } from './stores/default'
 
 const { getStoreCurrentUser, setStoreCurrentUser } = useDefaultStore()

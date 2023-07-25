@@ -14,6 +14,7 @@
     axios.post("http://localhost:3000/trip", {
       trip: {
         assignee_id: selectAssignee.value,
+        owner_id: getStoreCurrentUser().id,
         ETA: dateEta.value,
         ETC: dateEtc.value,
       }
