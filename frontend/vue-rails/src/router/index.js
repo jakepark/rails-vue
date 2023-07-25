@@ -27,6 +27,10 @@ const router = createRouter({
   routes, // short for `routes: routes`
 })
 
+// import { storeToRefs } from 'pinia'
+// import { useDefaultStore } from '../stores/default'
+// const { getStoreCurrentUser, setStoreCurrentUser } = useDefaultStore()
+
 function isAuthenticated(to) {
   // backend auth
   console.log(`isAuthenticated true`);

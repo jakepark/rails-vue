@@ -1,5 +1,6 @@
 <script setup>
 import axios from 'axios'
+import { ref } from 'vue'
 
 import { storeToRefs } from 'pinia'
 import { useDefaultStore } from '../stores/default'
@@ -13,28 +14,28 @@ defineProps(['emailInput'])
 defineEmits(['update:emailInput'])
 
 
-  function setCurrentUser(user){
-    console.log(`setCurrentUser(user.email): ${user.email}!`);
-    setStoreCurrentUser(user);
-  }
+function setCurrentUser(user){
+  console.log(`setCurrentUser(user.email): ${user.email}!`);
+  setStoreCurrentUser(user);
+}
 
-  function logIn(event){
-    console.log(`logIn!`);
-    let emailInput = event.target.parentElement.firstChild.lastChild.value; // messy..
-    console.log(`emailInput!: ${emailInput}`);
+function logIn(event){
+  console.log(`logIn!`);
+  let emailInput = event.target.parentElement.firstChild.lastChild.value; // messy..
+  console.log(`emailInput!: ${emailInput}`);
 
-    axios.post("http://localhost:3000/login", {email: emailInput}) // user_1@utilizecore.com
-      .then((resp) => {
-        console.log(`logIn success!`);
-        setCurrentUser(resp.data)
-      })
-      .catch((err) => {
-        console.error(`logIn error`)
-      })
-      .finally(() => {
-        console.log(`getStoreCurrentUser().email: ${getStoreCurrentUser()?.email}`);
-      })
-  }
+  axios.post("http://localhost:3000/login", {email: emailInput}) // user_1@utilizecore.com
+    .then((resp) => {
+      console.log(`logIn success!`);
+      setCurrentUser(resp.data)
+    })
+    .catch((err) => {
+      console.error(`logIn error`)
+    })
+    .finally(() => {
+      console.log(`getStoreCurrentUser().email: ${getStoreCurrentUser()?.email}`);
+    })
+}
 
 </script>
 
