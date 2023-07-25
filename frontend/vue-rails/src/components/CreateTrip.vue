@@ -22,7 +22,7 @@
     axios.post("http://localhost:3000/trip", {
       trip: {
         assignee_id: selectAssignee.value,
-        owner_id: currentUser.value.id,
+        owner_id: currentUser.value?.id,
         ETA: dateEta.value,
         ETC: dateEtc.value,
       }
@@ -30,12 +30,12 @@
     .then((resp) => {
       console.log(`createTrip success!`);
       
-      // router.push('/trips')
     })
     .catch((err) => {
       console.error(`createTrip error`)
     })
     .finally(() => {
+      // $emit('closeModal')
     })
   }
 
