@@ -1,10 +1,14 @@
 class LoginController < ApplicationController
   def show
     @params = params
-    
-    current_user = User.find_by(email: safe_params[:email])
-    puts "> LoginController #show current_user!: #{current_user.email} <"
 
+    current_user = User.find_by(email: safe_params[:email])
+
+    if !!current_user
+      render json: current_user.to_json
+    else
+      head(:unauthorized)
+    end
   end
 
   private

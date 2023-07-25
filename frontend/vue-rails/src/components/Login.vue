@@ -12,7 +12,7 @@ import axios from 'axios'
 
   function logIn(){
     console.log(`logIn!`);
-    axios.post("http://localhost:3000/login", {email: "user_1@utilizecore.com"})
+    axios.post("http://localhost:3000/login", {email: "user_0@utilizecore.com"})
       .then((resp) => {
         debugger
       })
