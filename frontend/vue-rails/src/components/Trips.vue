@@ -12,7 +12,6 @@ console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
 const currentUser = ref(null)
 
 function getTrips (){
-  console.log(`getTrips!`);
   fetch(`http://localhost:3000`)
     .then(response => response.json())
     .then(data => trips.value = data)
@@ -23,34 +22,21 @@ function getTrips (){
 
 getTrips()
 
-onMounted(() => {
-  // console.log(`Trips component is now mounted.`)
-  currentUser.value = getStoreCurrentUser()
-  // console.log(`onMounted setCurrentUser! ${currentUser.value?.email} <`);
-})
-
-
-</script>
-
-<script>
 import CreateTrip from './CreateTrip.vue'
 // import { ref } from 'vue';
 
 const showModal = ref(false)
 
 function handleToggleModal() {
-  console.log(`handleToggleModal!`);
   showModal.value = !showModal.value
   getTrips()
 }
 
-export default {
-  data() {
-    return {
-      showModal: false
-    }
-  }
-}
+onMounted(() => {
+  currentUser.value = getStoreCurrentUser()
+})
+
+
 </script>
 
 <template>
