@@ -9,7 +9,7 @@ import StatusOverdue from './StatusOverdue.vue'
 import StatusInProgress from './StatusInProgress.vue'
 
 const trips = ref(null);
-const trip_header = ["Assignee", "Owner", "ETA", "ETC", "Status", "Actions"];
+const trip_header = ["", "Assignee", "Owner", "ETA", "ETC", "Status", "Actions"];
 const headerHash = {
   "assignee_id": "Assignee", 
   "owner_id": "Owner", 
@@ -128,7 +128,7 @@ onMounted(() => {
         <tbody>
           <tr v-for="(trip, i ) in trips" :key="i">
             <td v-for="(attr, j) in trip" :key="j">
-              <span v-if="j !== 'id' && j !== 'status_id'">{{attr}}</span>
+              <span v-if="j !== 'status_id' && j !== 'id'">{{attr}}</span>
 
 
               <StatusUnstarted v-if="j == 'status_id' && statusHash[attr] == 'StatusUnstarted'"></StatusUnstarted>
@@ -181,6 +181,7 @@ onMounted(() => {
   background: #1A6EFB;
   color: white;
   border-radius: 5px;
+  float: left;
 }
 
 button {
