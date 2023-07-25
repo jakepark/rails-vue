@@ -41,19 +41,40 @@ function logIn(event){
 
 <template>
   <div id="login">
-    <label for="email-input">Email Address
-    <input id="email-input" v-model="emailInput" placeholder="-">
-    </label>
-    <!-- Set Rails Current User upon POST -->
-    <button @click="logIn($event)">Log In</button>
+    <div class='center clearfix'>
+      <label for="email-input">Email Address
+      <input id="email-input" v-model="emailInput" placeholder="-">
+      </label>
+      <br>
+      <button class="clearfix" @click="logIn($event)">Log In</button>
+    </div>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 #login {
   background-color: white;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.center {
+  margin: 20px 0;
+  padding: 20px 0;
+  
+  button {
+    display:block;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 20px;
+    margin: 5px 20px;
+    float:right;
+  }
 }
 </style>
