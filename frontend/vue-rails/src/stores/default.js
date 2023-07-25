@@ -2,8 +2,8 @@ import { defineStore } from 'pinia'
 
 // main is the name of the store. It is unique across your application
 // and will appear in devtools
-export const useMainStore = defineStore({
-  id: "mainStore",
+export const useDefaultStore = defineStore({
+  id: "default",
   state: () => ({
     counter: 0,
     currentUser: null,
@@ -13,8 +13,13 @@ export const useMainStore = defineStore({
     currentUserEmail: (state) => state.currentUser.email,
   },
   actions: {
+
+    getStoreCurrentUser() {
+      return this.currentUser;
+    },
+
     setStoreCurrentUser(user) {
-      this.currentUser = user;
+      return this.currentUser = user;
     },
 
     reset() {

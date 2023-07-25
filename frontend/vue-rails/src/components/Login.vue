@@ -1,16 +1,21 @@
 <script setup>
 import axios from 'axios'
 
+import { storeToRefs } from 'pinia'
+import { useDefaultStore } from '../stores/default'
+
+const { currentUser } = storeToRefs(useDefaultStore())
+const { getStoreCurrentUser, setStoreCurrentUser } = useDefaultStore()
+
+console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
 
 defineProps(['emailInput'])
 defineEmits(['update:emailInput'])
 
-</script>
-
-<script>
 
   function setCurrentUser(user){
     console.log(`setCurrentUser(user.email): ${user.email}!`);
+    setStoreCurrentUser(user);
   }
 
   function logIn(event){
@@ -26,7 +31,16 @@ defineEmits(['update:emailInput'])
       .catch((err) => {
         console.error(`logIn error`)
       })
+      .finally(() => {
+        console.log(`getStoreCurrentUser().email: ${getStoreCurrentUser()?.email}`);
+      })
   }
+
+</script>
+
+<script>
+
+
 
   export default {
     data() {
