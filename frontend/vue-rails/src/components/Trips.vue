@@ -41,11 +41,29 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="trips">
+  <div class="trips clearfix">
 
-    
+    <div class="button-modal clearfix">
+      <button id="show-modal" @click="handleToggleModal">
+        <div class="icon-add">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 20 20" fill="none">
+            <g clip-path="url(#clip0_101_95406)">
+              <path d="M15.8333 10.8334H10.8333V15.8334H9.16666V10.8334H4.16666V9.16669H9.16666V4.16669H10.8333V9.16669H15.8333V10.8334Z" fill="white"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_101_95406">
+                <rect width="20" height="20" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </button>
+      <CreateTrip  v-if="showModal" v-model="showModal" @close-modal="handleToggleModal">
+      </CreateTrip>
+    </div>
+
     <div v-if="trips">
-      <table >
+      <table class="clearfix">
         <thead>
           <tr>
             <th v-for="value in Object.keys(trips[0])">
@@ -125,35 +143,23 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="button-modal">
-      <button id="show-modal" @click="handleToggleModal">
-        <div class="icon-add">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 20 20" fill="none">
-            <g clip-path="url(#clip0_101_95406)">
-              <path d="M15.8333 10.8334H10.8333V15.8334H9.16666V10.8334H4.16666V9.16669H9.16666V4.16669H10.8333V9.16669H15.8333V10.8334Z" fill="white"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_101_95406">
-                <rect width="20" height="20" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
-      </button>
-      <CreateTrip  v-if="showModal" v-model="showModal" @close-modal="handleToggleModal">
-      </CreateTrip>
 
-    </div>
   </div>
 
 </template>
 
 <style lang="scss" scoped>
 
+.button-modal {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
 button {
   cursor: pointer;
   border: none;
   background-color: inherit;
+  float: right;
 }
 
 .icon-add {
