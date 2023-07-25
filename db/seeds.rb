@@ -8,13 +8,13 @@
 
 puts "db/seeds.rb initializing"
 
-user_1 = User.create(email: "user_1@utilizecore.com")
-user_2 = User.create(email: "user_2@utilizecore.com")
+user_1 = User.find_or_create_by(email: "user_1@utilizecore.com")
+user_2 = User.find_or_create_by(email: "user_2@utilizecore.com")
 
-unstarted = Status.create(title: "unstarted")
-started = Status.create(title: "started")
-in_progress = Status.create(title: "in_progress")
-overdue = Status.create(title: "overdue")
+unstarted = Status.find_or_create_by(title: "unstarted")
+started = Status.find_or_create_by(title: "started")
+in_progress = Status.find_or_create_by(title: "in_progress")
+overdue = Status.find_or_create_by(title: "overdue")
 
 
 trip_1 = Trip.create(owner: user_1, assignee: user_1, status_id: unstarted.id)
