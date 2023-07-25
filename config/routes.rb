@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "trip#index"
-  get "login", to: "login#show"
+  post "login", to: "login#show"
 end

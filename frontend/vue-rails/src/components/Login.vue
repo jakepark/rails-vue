@@ -5,13 +5,14 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+import axios from 'axios'
 </script>
 
 <script>
 
   function logIn(){
     console.log(`logIn!`);
-    fetch("http://localhost:3000/login")
+    axios.post("http://localhost:3000/login", {email: "user_1@utilizecore.com"})
       .then((resp) => {
         debugger
       })
