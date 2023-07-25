@@ -1,6 +1,12 @@
 <script setup>
   import ModalForm from './ModalForm.vue'
   defineEmits(['closeModal'])
+
+  function handleClick(){
+    console.log(`handleClick!`);
+  }
+
+
 </script>
 
 <template>
@@ -32,7 +38,7 @@
     </template>
 
     <template #footer>
-      <button>Create</button>
+      <button id="create-trip" @click="handleClick()">CREATE</button>
     </template>
   </ModalForm>
 </template>
@@ -40,6 +46,13 @@
 <style scoped>
 
 
+#create-trip {
+  background-color: #1A6EFB;
+  border-radius: 5px;
+  color: white;
+  margin: 0 auto;
+
+}
 h3 {
   color: black;
 }
@@ -47,6 +60,9 @@ h3 {
 button {
   border: none;
   background-color: inherit;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-weight: bold;;
 }
 
 
