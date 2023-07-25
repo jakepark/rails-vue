@@ -10,10 +10,6 @@ const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore
 
 console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
 
-defineProps(['emailInput'])
-defineEmits(['update:emailInput'])
-
-
 const emailInput = ref("")
 
 function setCurrentUser(user){
@@ -38,20 +34,6 @@ function logIn(event){
       console.log(`getStoreCurrentUser().email: ${getStoreCurrentUser()?.email}`);
     })
 }
-
-</script>
-
-<script>
-
-
-
-  export default {
-    data() {
-      return {
-        email: null
-      }
-    }
-  }
 
 </script>
 
