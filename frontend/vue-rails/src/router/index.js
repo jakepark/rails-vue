@@ -1,7 +1,6 @@
 console.log(`index.js!`);
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-
 // 1. Define route components.
 import Login from '../components/Login.vue'
 import Trips from '../components/Trips.vue'

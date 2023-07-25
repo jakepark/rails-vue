@@ -2,16 +2,12 @@
 import { storeToRefs } from 'pinia'
 import { useDefaultStore } from './stores/default'
 
-const { currentUser } = storeToRefs(useDefaultStore())
 const { getStoreCurrentUser, setStoreCurrentUser } = useDefaultStore()
 
 </script>
 
 <template>
   <main>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/trips">Trips</router-link>
-
     <router-view></router-view>
   </main>
 </template>
