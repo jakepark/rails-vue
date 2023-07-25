@@ -67,8 +67,8 @@
 
     <template #body>
       
-      <select id="select-assignee" v-model="selected">
-        <option :value="null">Select Assignee</option>
+      <select id="select-assignee" v-model="selected" required>
+        <option :value="null" disabled selected hidden>Select Assignee</option>
 
         <option v-for="option in options" :key="option.value" :value="option.value">
           {{ option.text }}
