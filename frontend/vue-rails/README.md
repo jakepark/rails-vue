@@ -1,5 +1,5 @@
-# Frontend Vue
+# Frontend Server Setup (Vue)
 
 cd frontend/vue-rails
 npm install
-npm run dev
+npm run dev -- --port 5173
