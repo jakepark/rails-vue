@@ -9,6 +9,7 @@ import StatusOverdue from './StatusOverdue.vue'
 import StatusInProgress from './StatusInProgress.vue'
 
 const trips = ref(null);
+const trip_header = ["Assignee", "Owner", "ETA", "ETC", "Statu", "Actions"];
 
 import { useDefaultStore } from '../stores/default'
 const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
@@ -23,6 +24,14 @@ function getTrips (){
     .catch(function(err){
       console.error(`> Rails error response: ${err}`)
     })
+}
+
+
+const statusHash = {
+  1: "StatusUnstarted",
+  2: "StatusComplete",
+  3: "StatusOverdue",
+  4: "StatusInProgress",
 }
 
 getTrips()
@@ -72,14 +81,19 @@ onMounted(() => {
         <thead>
           <tr>
             <th v-for="value in Object.keys(trips[0])">
-              {{ value }}
+              <span v-if="value !== 'id'">{{ value }}</span>
+              
             </th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(trip, i ) in trips" :key="i">
             <td v-for="(attr, j) in trip" :key="j">
-              {{attr}}
+              <span v-if="j !== 'id' && j !== 'status_id'">{{attr}}</span>
+              <StatusUnstarted v-if="j == 'status_id' && statusHash[attr] == 'StatusUnstarted'"></StatusUnstarted>
+              <StatusComplete v-if="j == 'status_id' && statusHash[attr] == 'StatusComplete'"></StatusComplete>
+              <StatusOverdue v-if="j == 'status_id' && statusHash[attr] == 'StatusOverdue'"></StatusOverdue>
+              <StatusInProgress v-if="j == 'status_id' && statusHash[attr] == 'StatusInProgress'"></StatusInProgress>
             </td>
           </tr>
         </tbody>
@@ -139,26 +153,30 @@ button {
   align-items: center;
   gap: 8px;
 
-  .unstarted {
-    border-radius: 4px;
-    background: #6994DE;
-  }
-  .complete {
-    border-radius: 4px;
-    background: #4CAF4F;
-    
-  }
-  .overdue {
-    border-radius: 4px;
-    background: #FF5252;
-  }
-  .in-progress {
-    border-radius: 4px;
-    background: #FFA525;
-  }
 }
 
 
+.unstarted {
+  width: 100px;
+  border-radius: 4px;
+  background: #6994DE;
+}
+.complete {
+  width: 100px;
+  border-radius: 4px;
+  background: #4CAF4F;
+  
+}
+.overdue {
+  width: 100px;
+  border-radius: 4px;
+  background: #FF5252;
+}
+.in-progress {
+  width: 100px;
+  border-radius: 4px;
+  background: #FFA525;
+}
 
 .checkin, .checkout {
   background: #1A6EFB;
