@@ -6,10 +6,7 @@
   import { ref, onMounted, onBeforeMount } from 'vue'
 
   const selected = ref("A")
-  const options = ref([
-    { text: 'User One', value: 1 },
-    { text: 'User Two', value: 2 },
-  ])
+  const userOptions = ref(null)
   const dateEta = ref("")
   const dateEtc = ref("")
   
@@ -49,9 +46,28 @@
     })
   }
 
+  function getUsers() {
+    axios.get("http://localhost:3000/user")
+    .then((resp) => {
+      console.log(`getUser success!`);
+      
+      userOptions.value = resp.data
+    })
+    .catch((err) => {
+      console.error(`getUser error`)
+    })
+    .finally(() => {
+      // emitUpdates()
+    })
+  }
+
+
+
   onMounted(() => {
     currentUser.value = getStoreCurrentUser() || VueCookies.get("currentUser")
     console.log(`currentUser.value.email!: ${currentUser.value?.email}`);
+
+    getUsers()
   })
 
 
@@ -70,8 +86,8 @@
       <select id="select-assignee" v-model="selected" required>
         <option :value="null" disabled selected hidden>Select Assignee</option>
 
-        <option v-for="option in options" :key="option.value" :value="option.value">
-          {{ option.text }}
+        <option v-for="option in userOptions" :key="option.id" :id="option.id" :value="option.id">
+          {{ option.email }}
         </option>
       </select>
 
