@@ -9,7 +9,15 @@ import StatusOverdue from './StatusOverdue.vue'
 import StatusInProgress from './StatusInProgress.vue'
 
 const trips = ref(null);
-const trip_header = ["Assignee", "Owner", "ETA", "ETC", "Statu", "Actions"];
+const trip_header = ["Assignee", "Owner", "ETA", "ETC", "Status", "Actions"];
+const headerHash = {
+  "assignee_id": "Assignee", 
+  "owner_id": "Owner", 
+  "ETA": "ETA", 
+  "ETC": "ETC", 
+  "status_id": "Status", 
+  "action_id": "Actions"
+}
 
 import { useDefaultStore } from '../stores/default'
 const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
@@ -80,8 +88,8 @@ onMounted(() => {
       <table class="clearfix">
         <thead>
           <tr>
-            <th v-for="value in Object.keys(trips[0])">
-              <span v-if="value !== 'id'">{{ value }}</span>
+            <th v-for="column_label in trip_header">
+              <span>{{ column_label }}</span>
               
             </th>
           </tr>
