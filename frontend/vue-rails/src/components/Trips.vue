@@ -5,6 +5,12 @@ import '@/assets/trips.css'
 
 const trips = ref(null);
 
+import { useDefaultStore } from '../stores/default'
+const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
+console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
+
+const currentUser = ref(null)
+
 fetch(`http://localhost:3000`)
   .then(response => response.json())
   .then(data => trips.value = data)
@@ -14,11 +20,13 @@ fetch(`http://localhost:3000`)
 
 
 onBeforeMount(() => {
-  console.log(`the component is onBeforeMount`);
+  console.log(`Trips component is onBeforeMount`);
 })
 
 onMounted(() => {
-  console.log(`the component is now mounted.`)
+  console.log(`Trips component is now mounted.`)
+  currentUser.value = getStoreCurrentUser()
+  console.log(`onMounted setCurrentUser! ${currentUser.value?.email} <`);
 })
 
 
@@ -34,6 +42,9 @@ function toggleModal() {
   console.log(`toggleModal!`);
   showModal.value = !showModal.value
 }
+function handleTripCreated() {
+  console.log(`handleTripCreated!`);
+}
 
 export default {
   data() {
@@ -45,7 +56,7 @@ export default {
 </script>
 
 <template>
-  <div class="trips">
+  <div class="trips" @trip-created="handleTripCreated">
     <div class="icon-add">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
         <g clip-path="url(#clip0_101_95406)">

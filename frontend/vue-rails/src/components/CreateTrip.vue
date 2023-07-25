@@ -1,6 +1,6 @@
 <script setup>
   import ModalForm from './ModalForm.vue'
-  defineEmits(['closeModal'])
+  const emit = defineEmits(['closeModal', 'tripCreated'])
 
   import axios from 'axios';
   import { ref, onMounted, onBeforeMount } from 'vue'
@@ -15,6 +15,11 @@
   console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
 
   const currentUser = ref(null)
+
+  const emitTripCreation = (event) => {
+    console.log(`emitTripCreation!`);
+    emit('tripCreated')
+  }
 
   function handleClick(){
     console.log(`handleClick!`);
@@ -36,6 +41,7 @@
     })
     .finally(() => {
       // $emit('closeModal')
+      emitTripCreation()
     })
   }
 
