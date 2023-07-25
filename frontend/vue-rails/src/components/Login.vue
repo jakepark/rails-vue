@@ -7,13 +7,21 @@ import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 </script>
 
+<script>
+
+  function logIn(){
+    console.log(`logIn!`);
+  }
+
+</script>
+
 <template>
   <WelcomeItem>
     <template #heading>Login</template>
 
     <input type="text">Email Address
     <!-- Set Rails Current User upon POST -->
-    <button>Log In</button>
+    <button @click="logIn">Log In</button>
   </WelcomeItem>
 
 </template>

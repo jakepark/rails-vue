@@ -1,6 +1,4 @@
 <script setup>
-import Login from './components/Login.vue'
-import Trips from './components/Trips.vue'
 </script>
 
 <template>
@@ -10,8 +8,10 @@ import Trips from './components/Trips.vue'
 
   <main>
 
-    <router-link to="/">Go to Home</router-link>
-    <router-link to="/trips">Go to Trips</router-link>
+    
+    <router-link to="/">Home</router-link>
+    <br>
+    <router-link to="/trips">Trips</router-link>
 
 
     <router-view></router-view>
