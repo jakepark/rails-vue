@@ -2,16 +2,21 @@ class LoginController < ApplicationController
   def show
     @params = params
 
-    current_user = User.find_by(email: safe_params[:email])
+    login_user = User.find_by(email: safe_params[:email])
 
-    if !!current_user
-      render json: current_user.to_json
+    if !!login_user
+      set_current_user(login_user)
+      render json: login_user.to_json
     else
       head(:unauthorized)
     end
   end
 
   private
+
+  def set_current_user(user)
+    @@current_user = user
+  end
 
   def safe_params
     params.require(:login).permit(:email)

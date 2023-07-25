@@ -1,14 +1,15 @@
-class TripController < ActionController::API
+class TripController < ApplicationController
+  before_action :authenticate_user
 
   def index
-    puts ">>> TripController#index"
+    puts "TripController#index"
     trips = Trip.all
 
     render json: trips.to_json
   end
 
   def create
-    puts ">>> TripController#create"
+    puts "TripController#create"
     trip = Trip.new(trip_params)
 
     if trip.save
