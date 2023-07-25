@@ -12,7 +12,23 @@
     </template>
 
     <template #body>
-      <p>Custom Body1</p>
+      
+      <label for="">Assignee</label>
+      <input list="select-assignee">
+      <datalist id="select-assignee">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="6"></option>
+      </datalist>
+      <label for="">ETA</label>
+      <input type="date">
+      <label for="">ETC</label>
+      <input type="date">
+
+
+
     </template>
 
     <template #footer>
@@ -20,3 +36,27 @@
     </template>
   </ModalForm>
 </template>
+
+<style scoped>
+
+
+h3 {
+  color: black;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}
+
+
+
+input, datalist {
+  display: block;
+}
+
+option {
+  display: none
+}
+
+</style>
