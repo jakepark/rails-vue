@@ -29,7 +29,7 @@ const router = createRouter({
 
 function isAuthenticated(to) {
   // backend auth
-  console.log(`isAuthenticated false`);
+  console.log(`isAuthenticated true`);
   return true
 } 
 

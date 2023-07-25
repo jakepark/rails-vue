@@ -9,8 +9,6 @@ const { getStoreCurrentUser, setStoreCurrentUser } = useDefaultStore()
 
 <template>
   <main>
-    Jake Park - Trip Planner
-    
     <router-link to="/">Home</router-link> |
     <router-link to="/trips">Trips</router-link>
 
