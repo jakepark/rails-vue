@@ -5,7 +5,11 @@
   import axios from 'axios';
   import { ref, onMounted, onBeforeMount } from 'vue'
 
-  const selectAssignee = ref("")
+  const selected = ref("A")
+  const options = ref([
+    { text: 'User One', value: 1 },
+    { text: 'User Two', value: 2 },
+  ])
   const dateEta = ref("")
   const dateEtc = ref("")
   
@@ -26,7 +30,7 @@
     
     axios.post("http://localhost:3000/trip", {
       trip: {
-        assignee_id: selectAssignee.value,
+        assignee_id: selected.value,
         owner_id: currentUser.value?.id,
         ETA: dateEta.value,
         ETC: dateEtc.value,
@@ -63,15 +67,15 @@
 
     <template #body>
       
-      <label for="">Assignee</label>
-      <input list="select-assignee" v-model="selectAssignee">
-      <datalist id="select-assignee">
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="6"></option>
-      </datalist>
+      <select id="select-assignee" v-model="selected">
+        <option :value="null">Select Assignee</option>
+
+        <option v-for="option in options" :key="option.value" :value="option.value">
+          {{ option.text }}
+        </option>
+      </select>
+
+      <br>
       <label for="">ETA</label>
       <input type="date" v-model="dateEta">
       <label for="">ETC</label>
@@ -88,6 +92,11 @@
 </template>
 
 <style scoped>
+
+
+option {
+  display: block !important; /* the one time i have had to use !important */
+}
 
 
 #create-trip {
