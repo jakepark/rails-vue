@@ -9,8 +9,14 @@ import Trips from './components/Trips.vue'
   </header>
 
   <main>
+
+    <router-link to="/">Go to Home</router-link>
+    <router-link to="/trips">Go to Trips</router-link>
+
     <Login />
     <Trips />
+
+    <router-view></router-view>
   </main>
 </template>
 
