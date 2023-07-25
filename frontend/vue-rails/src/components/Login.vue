@@ -8,6 +8,10 @@ defineEmits(['update:emailInput'])
 
 <script>
 
+  function setCurrentUser(emailInput){
+    console.log(`setCurrentUser: ${emailInput}!`);
+  }
+
   function logIn(event){
     console.log(`logIn!`);
     let emailInput = event.target.parentElement.firstChild.lastChild.value; // messy..
@@ -16,6 +20,7 @@ defineEmits(['update:emailInput'])
     axios.post("http://localhost:3000/login", {email: emailInput}) // user_1@utilizecore.com
       .then((resp) => {
         console.log(`logIn success!`);
+        setCurrentUser(emailInput)
       })
       .catch((err) => {
         console.error(`logIn error`)
