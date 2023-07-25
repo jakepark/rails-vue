@@ -2,6 +2,8 @@
 import axios from 'axios'
 import { ref } from 'vue'
 
+import router from '../router'
+
 import { storeToRefs } from 'pinia'
 import { useDefaultStore } from '../stores/default'
 
@@ -25,6 +27,7 @@ function logIn(event){
     .then((resp) => {
       console.log(`logIn success!`);
       setCurrentUser(resp.data)
+      router.push('/trips')
     })
     .catch((err) => {
       console.error(`logIn error`)
