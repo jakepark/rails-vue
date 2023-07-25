@@ -139,7 +139,7 @@ onMounted(() => {
               <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] == 1" @click="startTrip(trip['id'])">
                 Check In
               </button>
-              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] != 1 && trip['status_id'] != 2" @click="finishTrip(trip['id'])">
+              <button class="btn-status-check" v-if="j == 'action_id' && trip['status_id'] != 1 && trip['status_id'] != 4" @click="finishTrip(trip['id'])">
                 Check Out
               </button>
             </td>
