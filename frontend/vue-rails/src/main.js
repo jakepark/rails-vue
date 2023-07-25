@@ -1,3 +1,4 @@
+console.log(`main.js!`);
 import './assets/main.css'
 
 import { createApp } from 'vue'
@@ -19,5 +20,9 @@ app.use(pinia)
 import { useDefaultStore } from './stores/default'
 
 const defaultStore = useDefaultStore()
+
+// cookies
+import VueCookies from 'vue-cookies'
+app.use(VueCookies, { expires: '7d'})
 
 app.mount('#app')

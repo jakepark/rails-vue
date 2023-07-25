@@ -28,11 +28,11 @@ const router = createRouter({
 })
 
 
+import VueCookies from 'vue-cookies'
 
 function isAuthenticated(to) {
-  // backend auth
-  console.log(`isAuthenticated true`);
-  return true
+  console.log(`isAuthenticated: [${!!VueCookies.get("currentUser")}]`);
+  return !!VueCookies.get("currentUser") // default false, main.js sets cookie after
 } 
 
 export default router;

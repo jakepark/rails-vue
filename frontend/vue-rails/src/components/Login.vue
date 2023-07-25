@@ -12,8 +12,11 @@ console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
 
 const emailInput = ref("")
 
+import VueCookies from 'vue-cookies'
+
 function setCurrentUser(user){
   console.log(`setCurrentUser(user.email): ${user.email}!`);
+  VueCookies.set("currentUser", user.email)
   setStoreCurrentUser(user);
 }
 
