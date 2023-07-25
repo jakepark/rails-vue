@@ -42,18 +42,7 @@ onMounted(() => {
 
 <template>
   <div class="trips">
-    <div class="icon-add">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <g clip-path="url(#clip0_101_95406)">
-          <path d="M15.8333 10.8334H10.8333V15.8334H9.16666V10.8334H4.16666V9.16669H9.16666V4.16669H10.8333V9.16669H15.8333V10.8334Z" fill="white"/>
-        </g>
-        <defs>
-          <clipPath id="clip0_101_95406">
-            <rect width="20" height="20" fill="white"/>
-          </clipPath>
-        </defs>
-      </svg>
-    </div>
+
     
     <div v-if="trips">
       <table >
@@ -137,8 +126,20 @@ onMounted(() => {
     </div>
 
     <div class="button-modal">
-
-      <button id="show-modal" @click="handleToggleModal">Checkin</button>
+      <button id="show-modal" @click="handleToggleModal">
+        <div class="icon-add">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 20 20" fill="none">
+            <g clip-path="url(#clip0_101_95406)">
+              <path d="M15.8333 10.8334H10.8333V15.8334H9.16666V10.8334H4.16666V9.16669H9.16666V4.16669H10.8333V9.16669H15.8333V10.8334Z" fill="white"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_101_95406">
+                <rect width="20" height="20" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </button>
       <CreateTrip  v-if="showModal" v-model="showModal" @close-modal="handleToggleModal">
       </CreateTrip>
 
@@ -148,6 +149,20 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+}
+
+.icon-add {
+  background: #1A6EFB;
+  width: 30px; 
+  height: 30px;
+  border-radius: 100px;
+}
+
 .status-label {
   
 
@@ -179,12 +194,7 @@ onMounted(() => {
   }
 }
 
-.icon-add {
-  background: #1A6EFB;
-  width: 20px; 
-  height: 20px;
-  border-radius: 100px;
-}
+
 
 .checkin, .checkout {
   background: #1A6EFB;
