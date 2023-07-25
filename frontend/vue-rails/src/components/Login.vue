@@ -8,13 +8,17 @@ defineEmits(['update:emailInput'])
 
 <script>
 
-  function logIn(){
-    axios.post("http://localhost:3000/login", {email: emailInput})
+  function logIn(event){
+    console.log(`logIn!`);
+    let emailInput = event.target.parentElement.firstChild.lastChild.value; // messy..
+    console.log(`emailInput!: ${emailInput}`);
+
+    axios.post("http://localhost:3000/login", {email: emailInput}) // user_1@utilizecore.com
       .then((resp) => {
         console.log(`logIn success!`);
       })
       .catch((err) => {
-        console.error(`logIn error: ${err}`)
+        console.error(`logIn error`)
       })
   }
 
@@ -36,7 +40,7 @@ defineEmits(['update:emailInput'])
     >
     </label>
     <!-- Set Rails Current User upon POST -->
-    <button @click="logIn">Log In</button>
+    <button @click="logIn($event)">Log In</button>
   </div>
 </template>
 
