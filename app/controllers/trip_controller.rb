@@ -39,6 +39,12 @@ class TripController < ActionController::API
     trip_id = params[:id].to_i
     trip = Trip.find(trip_id)
     trip.started_at = Time.now
+
+    if trip.started_at < trip.ETC
+      trip.status_id = 2
+    else
+      trip.status_id = 3
+    end
     
     if trip.save
       render json: trip.to_json
@@ -52,6 +58,7 @@ class TripController < ActionController::API
     trip_id = params[:id].to_i
     trip = Trip.find(trip_id)
     trip.finished_at = Time.now
+    trip.status_id = 4
     
     if trip.save
       render json: trip.to_json
