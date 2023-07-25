@@ -25,10 +25,18 @@ onMounted(() => {
 </script>
 
 <script>
-import ModalForm from './ModalForm.vue'
+import CreateTrip from './CreateTrip.vue'
+// import { ref } from 'vue';
+
+const showModal = ref(false)
+
+function toggleModal() {
+  console.log(`toggleModal!`);
+  showModal.value = !showModal.value
+}
 
 export default {
-  data: function() {
+  data() {
     return {
       showModal: false
     }
@@ -134,23 +142,9 @@ export default {
 
     <div class="button-modal">
 
-      <button id="show-modal" @click="showModal = true">Checkin</button>
-      <!-- use the modal component, pass in the prop -->
-      <ModalForm v-if="showModal">
-
-        <template #header>
-          <h3 style="display: inline-block">Create New</h3>
-          <button @click="showModal = false" style="float: right">X</button>
-        </template>
-
-        <template #body>
-          <p>Custom Body</p>
-        </template>
-
-        <template #footer>
-          <button>Create</button>
-        </template>
-      </ModalForm>
+      <button id="show-modal" @click="toggleModal">Checkin</button>
+      <CreateTrip  v-if="showModal" v-model="showModal" @close-modal="toggleModal">
+      </CreateTrip>
 
     </div>
   </div>
