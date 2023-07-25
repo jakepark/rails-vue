@@ -2,24 +2,30 @@
 
 .trips {
   border: 1px solid grey;
-
+  background-color: white;;
 }
 
 
 
 
 table {
-  border: 10px solid grey;
+  border: 1px solid grey;
 }
 
-tr {
-  border: 10px solid green;
+thead {
+  border: 10px solid blue;
+  color: red;
+  font-weight: bolder;
+}
+
+tbody tr:first-of-type {
 
 }
+
 th {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 td {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
