@@ -11,13 +11,17 @@ console.log(`getStoreCurrentUser()!: ${getStoreCurrentUser()}`);
 
 const currentUser = ref(null)
 
-fetch(`http://localhost:3000`)
-  .then(response => response.json())
-  .then(data => trips.value = data)
-  .catch(function(err){
-    console.error(`> Rails error response: ${err}`)
-  })
+function getTrips (){
+  console.log(`getTrips!`);
+  fetch(`http://localhost:3000`)
+    .then(response => response.json())
+    .then(data => trips.value = data)
+    .catch(function(err){
+      console.error(`> Rails error response: ${err}`)
+    })
+}
 
+getTrips()
 
 onMounted(() => {
   // console.log(`Trips component is now mounted.`)
@@ -37,9 +41,7 @@ const showModal = ref(false)
 function handleToggleModal() {
   console.log(`handleToggleModal!`);
   showModal.value = !showModal.value
-}
-function handleTripCreated() {
-  console.log(`handleTripCreated!`);
+  getTrips()
 }
 
 export default {
@@ -52,7 +54,7 @@ export default {
 </script>
 
 <template>
-  <div class="trips" @trip-created="handleTripCreated">
+  <div class="trips">
     <div class="icon-add">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
         <g clip-path="url(#clip0_101_95406)">
