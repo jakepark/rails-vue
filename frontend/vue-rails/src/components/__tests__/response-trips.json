@@ -17,7 +17,7 @@
     "assignee_id": "2",
     "created_at": "2023-07-24T18:54:30.706Z",
     "id": 2,
-    "owner_id": "1",
+    "owner_uuid": "1",
     "status_id": "1",
     "updated_at": "2023-07-24T18:54:30.706Z,
   }

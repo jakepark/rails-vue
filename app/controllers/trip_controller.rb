@@ -1,7 +1,7 @@
 class TripController < ActionController::API
 
   def index
-    puts ">>> TripController#index"
+    # puts ">>> TripController#index"
     trips = Trip.select('assignee_id', 'owner_id', 'ETA', 'ETC', 'status_id', 'action_id', 'id').preload(:assignee, :owner).all
     
     mapped_trips = []
@@ -23,7 +23,7 @@ class TripController < ActionController::API
   end
 
   def create
-    puts ">>> TripController#create"
+    # puts ">>> TripController#create"
     trip = Trip.new(trip_params)
     trip.status_id = 1 # magic number here
     
@@ -35,7 +35,7 @@ class TripController < ActionController::API
   end
 
   def start
-    puts "start trip"
+    # puts "start trip"
     trip_id = params[:id].to_i
     trip = Trip.find(trip_id)
     trip.started_at = Time.now
@@ -54,7 +54,7 @@ class TripController < ActionController::API
   end
   
   def finish
-    puts "finish trip"
+    # puts "finish trip"
     trip_id = params[:id].to_i
     trip = Trip.find(trip_id)
     trip.finished_at = Time.now

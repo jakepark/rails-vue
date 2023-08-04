@@ -10,14 +10,15 @@ import StatusInProgress from './StatusInProgress.vue'
 
 const trips = ref(null);
 const trip_header = ["", "Assignee", "Owner", "ETA", "ETC", "Status", "Actions"];
-const headerHash = {
-  "assignee_id": "Assignee", 
-  "owner_id": "Owner", 
-  "ETA": "ETA", 
-  "ETC": "ETC", 
-  "status_id": "Status", 
-  "action_id": "Actions"
-}
+// api call 
+// const headerHash = {
+//   "assignee_id": "Assignee", 
+//   "owner_id": "Owner", 
+//   "ETA": "ETA", 
+//   "ETC": "ETC", 
+//   "status_id": "Status", 
+//   "action_id": "Actions"
+// }
 
 import { useDefaultStore } from '../stores/default'
 const { getStoreCurrentUser, setStoreCurrentUser, resetStore } = useDefaultStore()
@@ -66,6 +67,7 @@ function startTrip(tripId){
   })
   .finally(() => {
     // emitUpdates()
+    // getTrip()
     getTrips()
   })
 }
@@ -111,7 +113,7 @@ onMounted(() => {
           </svg>
         </div>
       </button>
-      <CreateTrip  v-if="showModal" v-model="showModal" @close-modal="handleToggleModal">
+      <CreateTrip  v-if="showModal" @close-modal="handleToggleModal">
       </CreateTrip>
     </div>
 
